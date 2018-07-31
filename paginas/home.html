@@ -64,11 +64,12 @@
 				$.get("http://playfc.com.br/app_api/home.php", { tipo_usuarios:tipo_usuarios, id_usuarios:id_usuarios, registrationId:registrationId }, function(data){ $('#home_conteudo').html(data); });
 				*/
 				
-				$.getJSON("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getCategoriasCampeonato", { id:'2019' }, function(data){
-					alert(data);
+				$.post("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getCategoriasCampeonato", { id:'2019' }, function(data){
+					var info = JSON.parse(data);
 					var items = [];
-					$.each(data,function(idCategoria,campeonato,titulo,anoMin,anoMax,reservas,jogMax,jogMin,valor,divisao,vagas){
-						items.push( "<div id='"+idCategoria+"'>"+titulo+"</li>");
+					console.log(info);
+					$.each(info,function(data){
+						items.push( "<div id='"+info[data].idCategoria+"' style='color:#fff;'>"+info[data].titulo+"</div>");
 					});
 
 
