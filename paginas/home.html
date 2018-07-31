@@ -24,6 +24,7 @@
 		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=medium-dpi" />
         <link rel="stylesheet" type="text/css" href="../css/index.css" />
         <link rel="stylesheet" type="text/css" href="../css/jquery.mobile-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css" />
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
         <title>PLAYFC</title>
 		<script type="text/javascript" src="../js/jquery.min.js"></script>
@@ -49,6 +50,13 @@
 				</div>
 			</div>
 			
+			<style>
+				#home_conteudo					{ margin:-11px -26px 0px -26px; }
+				.lista-categorias				{ border-top:1px solid #CCC; border-bottom:1px solid #CCC; background:#FFF; padding:15px; margin-bottom:-1px; color:#666; line-height:20px; font-size:13px; }
+				.lista-categorias b				{ font-size:15px; }
+				.lista-categorias i				{ display:block; float:left; font-size:30px; padding:5px 15px 0px 0px; }
+			</style>
+			
 			<script>
 				
 				var tipo_usuarios = window.localStorage.getItem('tipo_usuarios');
@@ -69,7 +77,7 @@
 					var items = [];
 					console.log(info);
 					$.each(info,function(data){
-						items.push( "<div id='"+info[data].idCategoria+"' style='color:#fff;'>"+info[data].titulo+"</div>");
+						items.push( "<div class='lista-categorias' id='"+info[data].idCategoria+"'><i class='fa fa-futbol-o' aria-hidden='true'></i><b>"+info[data].titulo+"</b><br>Campeonato "+info[data].campeonato+"</div>");
 					});
 
 
