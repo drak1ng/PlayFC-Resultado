@@ -54,15 +54,28 @@
 				var tipo_usuarios = window.localStorage.getItem('tipo_usuarios');
 				var id_usuarios = window.localStorage.getItem('id_usuarios');
 				var registrationId = window.localStorage.getItem('registrationId');
-				
+
+				/*				
 				$('.topo2-menu').click(function(){ $('.menu-container').show(); });
-				
 				$('#bt-home-sair').click(function(){
 					window.localStorage.setItem('id_usuarios','');
 					$.mobile.changePage("login.html", { transition: "fade", changeHash: false });
 				});
-				
 				$.get("http://playfc.com.br/app_api/home.php", { tipo_usuarios:tipo_usuarios, id_usuarios:id_usuarios, registrationId:registrationId }, function(data){ $('#home_conteudo').html(data); });
+				*/
+				
+				$.getJSON("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getCategoriasCampeonato", { id:'2019' }, function(data){
+					alert(data);
+					var items = [];
+					$.each(data,function(idCategoria,campeonato,titulo,anoMin,anoMax,reservas,jogMax,jogMin,valor,divisao,vagas){
+						items.push( "<div id='"+idCategoria+"'>"+titulo+"</li>");
+					});
+
+
+
+					$('#home_conteudo').html(items.join(""));
+					
+				});
 				
 			</script>
 		
