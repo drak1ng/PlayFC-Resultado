@@ -66,7 +66,11 @@
 				var id_usuarios = window.localStorage.getItem('id_usuarios');
 				var registrationId = window.localStorage.getItem('registrationId');
 				
-				var categoria = window.localStorage.getItem('categoria');
+				var categoria = window.localStorage.getItem('categoria_id');
+				var categoria_nome = window.localStorage.getItem('categoria_nome');
+				var categoria_campeonato = window.localStorage.getItem('categoria_campeonato');
+				
+				$('#tabela-titulo').html(categoria_nome);
 
 				$("#bt_tabela_voltar").click(function(){
 					$.mobile.changePage("home.html", { transition: "fade", changeHash: false });

@@ -77,14 +77,17 @@
 					var items = [];
 					console.log(info);
 					$.each(info,function(data){
-						items.push( "<div class='lista-categorias' rel='"+info[data].idCategoria+"'><i class='fa fa-futbol-o' aria-hidden='true'></i><b>"+info[data].titulo+"</b><br>Campeonato "+info[data].campeonato+"</div>");
+						items.push( "<div class='lista-categorias' rel='"+info[data].idCategoria+";#;"+info[data].titulo+";#;"+info[data].campeonato+"'><i class='fa fa-futbol-o' aria-hidden='true'></i><b>"+info[data].titulo+"</b><br>Campeonato "+info[data].campeonato+"</div>");
 					});
 
 					$('#home_conteudo').html(items.join(""));
 					
 					$('.lista-categorias').click(function(){
 						var categoria = $(this).attr('rel');
-						window.localStorage.setItem('categoria',categoria);
+						var informacoes = categoria.split(";#;")
+						window.localStorage.setItem('categoria_id',informacoes[0]);
+						window.localStorage.setItem('categoria_nome',informacoes[1]);
+						window.localStorage.setItem('categoria_campeonato',informacoes[2]);
 						$.mobile.changePage("tabela.html", { transition: "fade", changeHash: false });						
 					});
 					
