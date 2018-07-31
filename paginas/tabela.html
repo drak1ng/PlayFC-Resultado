@@ -37,12 +37,12 @@
 
 		    <div class="topo">
 			    <div class="logotipo">
-				    <div style="margin:0px 80px; text-align:center; color:#000; font-family:'roboto';" id="home-titulo"><b>PLAY FC - RESULTADOS<b></div>
+				    <div style="margin:0px 80px; text-align:center; color:#000; font-family:'roboto';" id="tabela-titulo"><b>PLAY FC - RESULTADOS<b></div>
 				</div>
 		    </div>
 
 			<div role="main" class="ui-content" style="text-align:center;">
-				<div class="conteudo" id="home_conteudo">
+				<div class="conteudo" id="tabela_conteudo">
 					<div style="padding-top:120px; text-align:center; font-size:13px; color:#FFF;">
 						<img src="../img/ajax-loader.gif" /><br><br>
 						Aguarde carregando...
@@ -51,10 +51,12 @@
 			</div>
 			
 			<style>
-				#home_conteudo					{ margin:-11px -26px 0px -26px; }
-				.lista-categorias				{ border-top:1px solid #CCC; border-bottom:1px solid #CCC; background:#FFF; padding:15px; margin-bottom:-1px; color:#666; line-height:20px; font-size:13px; }
-				.lista-categorias b				{ font-size:15px; }
-				.lista-categorias i				{ display:block; float:left; font-size:30px; padding:5px 15px 0px 0px; }
+				#tabela_conteudo				{ margin:9px -16px -16px -16px; background:#ebebeb; padding:10px; }
+				.lista-grupos					{ margin:5px; padding:10px; border:1px solid #CCC; border-radius:6px; background:#FFF; }
+				.lista-grupos-titulo			{ text-align:center; color:#333; font-weight:bold; margin-bottom:10px; }
+				.lista-grupos-equipes			{ border-top:1px solid #CCC; padding:5px; font-size:11px; }
+				.lista-grupos-equipes-nome		{ width:calc(100% - 30px); float:left; text-transform:uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+				.lista-grupos-equipes-pontos	{ width:24px; float:right; font-weight:bold; text-align:center; }
 			</style>
 			
 			<script>
@@ -62,6 +64,9 @@
 				var tipo_usuarios = window.localStorage.getItem('tipo_usuarios');
 				var id_usuarios = window.localStorage.getItem('id_usuarios');
 				var registrationId = window.localStorage.getItem('registrationId');
+				
+				var categoria = window.localStorage.getItem('categoria');
+
 
 				/*				
 				$('.topo2-menu').click(function(){ $('.menu-container').show(); });
@@ -72,20 +77,31 @@
 				$.get("http://playfc.com.br/app_api/home.php", { tipo_usuarios:tipo_usuarios, id_usuarios:id_usuarios, registrationId:registrationId }, function(data){ $('#home_conteudo').html(data); });
 				*/
 				
-				$.post("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getCategoriasCampeonato", { id:'2019' }, function(data){
+				$.post("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getGruposCategoria", { id:categoria }, function(data){
 					var info = JSON.parse(data);
 					var items = [];
-					console.log(info);
+						
 					$.each(info,function(data){
-						items.push( "<div class='lista-categorias' rel='"+info[data].idCategoria+"'><i class='fa fa-futbol-o' aria-hidden='true'></i><b>"+info[data].titulo+"</b><br>Campeonato "+info[data].campeonato+"</div>");
-					});
+						
+						items.push( "<div class='lista-grupos'><div class='lista-grupos-titulo'>"+info[data].nome+"</div><div id='lista_equipes_"+info[data].idGrupo+"'></div></div>");
 
-					$('#home_conteudo').html(items.join(""));
+					});
 					
-					$('.lista-categorias').click(function(){
-						var categoria = $(this).attr('rel');
-						window.localStorage.setItem('categoria',categoria);
-						$.mobile.changePage("tabela.html", { transition: "fade", changeHash: false });						
+					$('#tabela_conteudo').html(items.join(""));
+						
+					$.each(info,function(data){
+						
+						$.post("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getTabelaGrupo", { id:info[data].idGrupo }, function(data2){
+							var info2 = JSON.parse(data2);
+							var items2 = [];
+							$.each(info2,function(data2){
+								items2.push( "<div class='lista-grupos-equipes'><div class='lista-grupos-equipes-nome'>"+info2[data2].equipe+"</div><div class='lista-grupos-equipes-pontos'>"+info2[data2].pontos+"</div><div style='clear:both;'></div></div>");
+							});
+		
+							$("#lista_equipes_"+info[data].idGrupo).html(items2.join(""));
+							
+						});
+
 					});
 					
 				});
