@@ -67,11 +67,11 @@
 		            if(jaFicouOffline==1){
 			            jaFicouOffline=0;
 				        var id_usuarios = window.localStorage.getItem('id_usuarios');
-						//if(id_usuarios!="" && id_usuarios!=null){
+						if(id_usuarios!="" && id_usuarios!=null){
 							$.mobile.changePage("./paginas/home.html", { transition: "none", changeHash: false });
-						//}else{
-						//	$.mobile.changePage("./paginas/login.html", { transition: "none", changeHash: false });	
-						//}
+						}else{
+							$.mobile.changePage("./paginas/login.html", { transition: "none", changeHash: false });	
+						}
 			        }
 		        }
 		        
@@ -82,11 +82,11 @@
 		        
 		        function carregar(){
 			        var id_usuarios = window.localStorage.getItem('id_usuarios');
-					//if(id_usuarios!="" && id_usuarios!=null){
+					if(id_usuarios!="" && id_usuarios!=null){
 						$.mobile.changePage("./paginas/home.html", { transition: "none", changeHash: false });
-					//}else{
-					//	$.mobile.changePage("./paginas/login.html", { transition: "none", changeHash: false });	
-					//}
+					}else{
+						$.mobile.changePage("./paginas/login.html", { transition: "none", changeHash: false });	
+					}
 				}
 				
 				alert = function (txt) {
