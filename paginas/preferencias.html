@@ -35,36 +35,21 @@
 	    
 	    <div data-role="page">
 
-
+		    <div class="topo">
+			    <div class="logotipo">
+				    <div style="min-width:10px; float:left; color:#000; padding:10px 10px; margin:-10px 0px -10px -10px;" id="bt-preferencias-voltar"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+				    <div style="margin:0px 80px; text-align:center; color:#000; font-family:'roboto';" id="preferencias-titulo"><b>PREFERÊNCIAS<b></div>
+				</div>
+		    </div>
 
 			<div role="main" class="ui-content" style="text-align:center;">
-				<div class="conteudo" id="home_conteudo">
-					<center>
-					    <img src="../img/logo_playfc.png" alt="PLAYFC" width="240" style="margin:30px 0px 10px 0px;">
-					</center>
-					<br><br>
-					<div class="home-itens1" id="home_campeonatos">
-						<i class='fa fa-futbol-o' aria-hidden='true'></i>
-						Campeonatos
-					</div>
-					<div class="home-itens2" id="home_preferencias">
-						<i class="fa fa-cogs" aria-hidden="true"></i>
-						Preferências
-					</div>
-					<div class="home-itens2" id="home_sair">
-						<i class="fa fa-sign-out" aria-hidden="true"></i>
-						Sair
+				<div class="conteudo" id="preferencias-conteudo">
+					<div style="padding-top:120px; text-align:center; font-size:13px; color:#FFF;">
+						<img src="../img/ajax-loader.gif" /><br><br>
+						Aguarde carregando...
 					</div>
 				</div>
 			</div>
-			
-			<style>
-				#home_conteudo					{ margin:-11px -26px 0px -26px; padding:20px; }
-				.home-itens1						{ border:1px solid #000; background:#FFF; width:calc(100% - 12px); margin:5px; float:left; text-align:center; border-radius:6px; padding:10px 0px; font-weight:700; }
-				.home-itens1 i					{ display:block; font-size:50px; color:#666; text-align:center; padding:10px 0px; }
-				.home-itens2						{ border:1px solid #000; background:#666; width:calc(50% - 12px); margin:5px; float:left; text-align:center; border-radius:6px; padding:10px 0px; color:#CCC; }
-				.home-itens2 i					{ display:block; font-size:30px; color:#ccc; text-align:center; padding:10px 0px; }
-			</style>
 			
 			<script>
 				
@@ -72,25 +57,13 @@
 				var id_usuarios = window.localStorage.getItem('id_usuarios');
 				var registrationId = window.localStorage.getItem('registrationId');
 
-				/*				
-				$('.topo2-menu').click(function(){ $('.menu-container').show(); });
-				$.get("http://playfc.com.br/app_api/home.php", { tipo_usuarios:tipo_usuarios, id_usuarios:id_usuarios, registrationId:registrationId }, function(data){ $('#home_conteudo').html(data); });
-				*/
-				
-				$('#home_campeonatos').click(function(){
-					$.mobile.changePage("campeonatos.html", { transition: "fade", changeHash: false });
-				});
-				
-				$('#home_preferencias').click(function(){
-					$.mobile.changePage("preferencias.html", { transition: "fade", changeHash: false });
-				});
-				
-				$('#home_sair').click(function(){
-					window.localStorage.setItem('id_usuarios','');
-					$.mobile.changePage("login.html", { transition: "fade", changeHash: false });
+				$("#bt-preferencias-voltar").click(function(){
+					$.mobile.changePage("home.html", { transition: "fade", changeHash: false });
 				});
 				
 			</script>
+			
+			
 		
 		</div>
     </body>
