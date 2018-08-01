@@ -37,12 +37,12 @@
 
 		    <div class="topo">
 			    <div class="logotipo">
-				    <div style="margin:0px 80px; text-align:center; color:#000; font-family:'roboto';" id="home-titulo"><b>PLAY FC - RESULTADOS<b></div>
+				    <div style="margin:0px 80px; text-align:center; color:#000; font-family:'roboto';" id="categorias-titulo"><b>PLAY FC - RESULTADOS<b></div>
 				</div>
 		    </div>
 
 			<div role="main" class="ui-content" style="text-align:center;">
-				<div class="conteudo" id="home_conteudo">
+				<div class="conteudo" id="categorias_conteudo">
 					<div style="padding-top:120px; text-align:center; font-size:13px; color:#FFF;">
 						<img src="../img/ajax-loader.gif" /><br><br>
 						Aguarde carregando...
@@ -62,6 +62,12 @@
 				var tipo_usuarios = window.localStorage.getItem('tipo_usuarios');
 				var id_usuarios = window.localStorage.getItem('id_usuarios');
 				var registrationId = window.localStorage.getItem('registrationId');
+				
+				
+				var campeonato = window.localStorage.getItem('campeonato_id');
+				var campeonato = window.localStorage.getItem('campeonato_nome');
+				
+				$('#categorias-titulo').html(categoria_nome);
 
 				/*				
 				$('.topo2-menu').click(function(){ $('.menu-container').show(); });
@@ -72,7 +78,7 @@
 				$.get("http://playfc.com.br/app_api/home.php", { tipo_usuarios:tipo_usuarios, id_usuarios:id_usuarios, registrationId:registrationId }, function(data){ $('#home_conteudo').html(data); });
 				*/
 				
-				$.post("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getCategoriasCampeonato", { id:'2019' }, function(data){
+				$.post("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getCategoriasCampeonato", { id:campeonato }, function(data){
 					var info = JSON.parse(data);
 					var items = [];
 					console.log(info);
@@ -80,7 +86,7 @@
 						items.push( "<div class='lista-categorias' rel='"+info[data].idCategoria+";#;"+info[data].titulo+";#;"+info[data].campeonato+"'><i class='fa fa-futbol-o' aria-hidden='true'></i><b>"+info[data].titulo+"</b><br>Campeonato "+info[data].campeonato+"</div>");
 					});
 
-					$('#home_conteudo').html(items.join(""));
+					$('#categorias_conteudo').html(items.join(""));
 					
 					$('.lista-categorias').click(function(){
 						var categoria = $(this).attr('rel');

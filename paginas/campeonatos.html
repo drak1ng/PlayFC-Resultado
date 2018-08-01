@@ -43,7 +43,7 @@
 		    </div>
 
 			<div role="main" class="ui-content" style="text-align:center;">
-				<div class="conteudo" id="preferencias-conteudo">
+				<div class="conteudo" id="campeonatos-conteudo">
 					<div style="padding-top:120px; text-align:center; font-size:13px; color:#FFF;">
 						<img src="../img/ajax-loader.gif" /><br><br>
 						Aguarde carregando...
@@ -59,6 +59,10 @@
 
 				$("#bt-campeonatos-voltar").click(function(){
 					$.mobile.changePage("home.html", { transition: "fade", changeHash: false });
+				});
+				
+				$.get("http://playfc.projetotemporario.com.br/app_api/campeonatos.php", function(data){
+					$("#campeonatos-conteudo").html(data);
 				});
 				
 			</script>
