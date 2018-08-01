@@ -61,15 +61,20 @@
 				$('#cadastro_celular').mask('(00) 00000-0000');
 				
 				$("#bt_cadastro_salvar").click(function(){
-					var email = $('#recuperar_email').val();
+					var nome = $('#cadastro_nome').val();
+					var idade = $('#cadastro_idade').val();
+					var celular = $('#cadastro_celular').val();
+					var email = $('#cadastro_email').val();
+					var senha = $('#cadastro_senha').val();
 					
 					if(email==""){ alert("O campo E-mail deve ser preenchido"); return false; }
 					
-					$.get("http://playfc.projetotemporario.com.br/app_api/esqueci-minha-senha.php", { email:email }, function(data){
-						if(data=="ERRO_EMAIL"){
-							alert("Não foi encontrado nenhum cadastro com esse E-mail!");
+					$.get("http://playfc.projetotemporario.com.br/app_api/cadastro.php", { 
+						 }, function(data){
+						if(data=="ERRO_CELULAR"){
+							alert("Esse E-mail já foi utilizado em outro cadastro!");
 						}else{
-							$.mobile.changePage("esqueci_minha_senha_obrigado.html", { transition: "fade", changeHash: false });
+							$.mobile.changePage("cadastro_obrigado.html", { transition: "fade", changeHash: false });
 						}
 					});
 					
