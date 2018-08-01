@@ -37,6 +37,7 @@
 
 		    <div class="topo">
 			    <div class="logotipo">
+				    <div style="min-width:10px; float:left; color:#000; padding:10px 10px; margin:-10px 0px -10px -10px;" id="bt-categorias-voltar"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
 				    <div style="margin:0px 80px; text-align:center; color:#000; font-family:'roboto';" id="categorias-titulo"><b>PLAY FC - RESULTADOS<b></div>
 				</div>
 		    </div>
@@ -51,7 +52,7 @@
 			</div>
 			
 			<style>
-				#home_conteudo					{ margin:-11px -26px 0px -26px; }
+				#categorias-conteudo			{ margin:-11px -26px 0px -26px; }
 				.lista-categorias				{ border-top:1px solid #CCC; border-bottom:1px solid #CCC; background:#FFF; padding:15px; margin-bottom:-1px; color:#666; line-height:20px; font-size:13px; }
 				.lista-categorias b				{ font-size:15px; }
 				.lista-categorias i				{ display:block; float:left; font-size:30px; padding:5px 15px 0px 0px; }
@@ -78,6 +79,10 @@
 				$.get("http://playfc.com.br/app_api/home.php", { tipo_usuarios:tipo_usuarios, id_usuarios:id_usuarios, registrationId:registrationId }, function(data){ $('#home_conteudo').html(data); });
 				*/
 				
+				$("#bt-categorias-voltar").click(function(){
+					$.mobile.changePage("campeonatos.html", { transition: "fade", changeHash: false });
+				});
+				
 				$.post("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getCategoriasCampeonato", { id:campeonato }, function(data){
 					var info = JSON.parse(data);
 					var items = [];
@@ -98,6 +103,8 @@
 					});
 					
 				});
+				
+				
 				
 			</script>
 		
