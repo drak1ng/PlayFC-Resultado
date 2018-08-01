@@ -42,7 +42,7 @@
 		    </div>
 
 			<div role="main" class="ui-content" style="text-align:center;">
-				<div class="conteudo" id="categorias_conteudo">
+				<div class="conteudo" id="categorias-conteudo">
 					<div style="padding-top:120px; text-align:center; font-size:13px; color:#FFF;">
 						<img src="../img/ajax-loader.gif" /><br><br>
 						Aguarde carregando...
@@ -65,7 +65,7 @@
 				
 				
 				var campeonato = window.localStorage.getItem('campeonato_id');
-				var campeonato = window.localStorage.getItem('campeonato_nome');
+				var categoria_nome = window.localStorage.getItem('campeonato_nome');
 				
 				$('#categorias-titulo').html(categoria_nome);
 
@@ -86,7 +86,7 @@
 						items.push( "<div class='lista-categorias' rel='"+info[data].idCategoria+";#;"+info[data].titulo+";#;"+info[data].campeonato+"'><i class='fa fa-futbol-o' aria-hidden='true'></i><b>"+info[data].titulo+"</b><br>Campeonato "+info[data].campeonato+"</div>");
 					});
 
-					$('#categorias_conteudo').html(items.join(""));
+					$('#categorias-conteudo').html(items.join(""));
 					
 					$('.lista-categorias').click(function(){
 						var categoria = $(this).attr('rel');
