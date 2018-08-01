@@ -35,36 +35,26 @@
 	    
 	    <div data-role="page">
 
-
+		    <div class="topo">
+			    <div class="logotipo">
+				    <div style="margin:0px 80px; text-align:center; color:#000; font-family:'roboto';" id="home-titulo"><b>PLAY FC - RESULTADOS<b></div>
+				</div>
+		    </div>
 
 			<div role="main" class="ui-content" style="text-align:center;">
 				<div class="conteudo" id="home_conteudo">
-					<center>
-					    <img src="../img/logo_playfc.png" alt="PLAYFC" width="240" style="margin:30px 0px 10px 0px;">
-					</center>
-					
-					<div class="home-itens1">
-						<i class='fa fa-futbol-o' aria-hidden='true'></i>
-						Campeonatos
+					<div style="padding-top:120px; text-align:center; font-size:13px; color:#FFF;">
+						<img src="../img/ajax-loader.gif" /><br><br>
+						Aguarde carregando...
 					</div>
-					<div class="home-itens2">
-						<i class="fa fa-cogs" aria-hidden="true"></i>
-						Preferências
-					</div>
-					<div class="home-itens2">
-						<i class="fa fa-sign-out" aria-hidden="true"></i>
-						Sair
-					</div>
-				    <br><br><br>
 				</div>
 			</div>
 			
 			<style>
-				#home_conteudo					{ margin:-11px -26px 0px -26px; padding:20px; }
-				.home-itens1						{ border:1px solid #000; background:#FFF; width:calc(100% - 12px); margin:5px; float:left; text-align:center; border-radius:6px; padding:10px 0px; font-weight:700; }
-				.home-itens1 i					{ display:block; font-size:50px; color:#666; text-align:center; padding:10px 0px; }
-				.home-itens2						{ border:1px solid #000; background:#666; width:calc(50% - 12px); margin:5px; float:left; text-align:center; border-radius:6px; padding:10px 0px; color:#CCC; }
-				.home-itens2 i					{ display:block; font-size:30px; color:#ccc; text-align:center; padding:10px 0px; }
+				#home_conteudo					{ margin:-11px -26px 0px -26px; }
+				.lista-categorias				{ border-top:1px solid #CCC; border-bottom:1px solid #CCC; background:#FFF; padding:15px; margin-bottom:-1px; color:#666; line-height:20px; font-size:13px; }
+				.lista-categorias b				{ font-size:15px; }
+				.lista-categorias i				{ display:block; float:left; font-size:30px; padding:5px 15px 0px 0px; }
 			</style>
 			
 			<script>
@@ -75,12 +65,32 @@
 
 				/*				
 				$('.topo2-menu').click(function(){ $('.menu-container').show(); });
-				$.get("http://playfc.com.br/app_api/home.php", { tipo_usuarios:tipo_usuarios, id_usuarios:id_usuarios, registrationId:registrationId }, function(data){ $('#home_conteudo').html(data); });
-				*/
-				
 				$('#bt-home-sair').click(function(){
 					window.localStorage.setItem('id_usuarios','');
 					$.mobile.changePage("login.html", { transition: "fade", changeHash: false });
+				});
+				$.get("http://playfc.com.br/app_api/home.php", { tipo_usuarios:tipo_usuarios, id_usuarios:id_usuarios, registrationId:registrationId }, function(data){ $('#home_conteudo').html(data); });
+				*/
+				
+				$.post("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getCategoriasCampeonato", { id:'2019' }, function(data){
+					var info = JSON.parse(data);
+					var items = [];
+					console.log(info);
+					$.each(info,function(data){
+						items.push( "<div class='lista-categorias' rel='"+info[data].idCategoria+";#;"+info[data].titulo+";#;"+info[data].campeonato+"'><i class='fa fa-futbol-o' aria-hidden='true'></i><b>"+info[data].titulo+"</b><br>Campeonato "+info[data].campeonato+"</div>");
+					});
+
+					$('#home_conteudo').html(items.join(""));
+					
+					$('.lista-categorias').click(function(){
+						var categoria = $(this).attr('rel');
+						var informacoes = categoria.split(";#;")
+						window.localStorage.setItem('categoria_id',informacoes[0]);
+						window.localStorage.setItem('categoria_nome',informacoes[1]);
+						window.localStorage.setItem('categoria_campeonato',informacoes[2]);
+						$.mobile.changePage("tabela.html", { transition: "fade", changeHash: false });						
+					});
+					
 				});
 				
 			</script>
