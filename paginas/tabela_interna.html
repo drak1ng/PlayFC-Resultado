@@ -37,13 +37,13 @@
 
 		    <div class="topo">
 			    <div class="logotipo">
-				    <div style="min-width:10px; float:left; color:#000; padding:10px 10px; margin:-10px 0px -10px -10px;" id="bt_tabela_voltar"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
-				    <div style="margin:0px 80px; text-align:center; color:#000; font-family:'roboto';" id="tabela-titulo"><b>PLAY FC - RESULTADOS<b></div>
+				    <div style="min-width:10px; float:left; color:#000; padding:10px 10px; margin:-10px 0px -10px -10px;" id="bt_tabela_interna_voltar"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+				    <div style="margin:0px 80px; text-align:center; color:#000; font-family:'roboto';" id="tabela-interna-titulo"><b>PLAY FC - RESULTADOS<b></div>
 				</div>
 		    </div>
 
 			<div role="main" class="ui-content" style="text-align:center;">
-				<div class="conteudo" id="tabela_conteudo">
+				<div class="conteudo" id="tabela_interna_conteudo">
 					<div style="padding-top:120px; text-align:center; font-size:13px; color:#FFF;">
 						<img src="../img/ajax-loader.gif" /><br><br>
 						Aguarde carregando...
@@ -52,7 +52,7 @@
 			</div>
 			
 			<style>
-				#tabela_conteudo				{ margin:9px -16px -16px -16px; padding:10px; }
+				#tabela_interna_conteudo				{ margin:9px -16px -16px -16px; padding:10px; }
 				.lista-grupos					{ margin:10px 5px; padding:10px; border-radius:6px; background:#FFF; }
 				.lista-grupos-titulo			{ text-align:center; color:#333; font-weight:bold; margin-bottom:10px; }
 				.lista-grupos-equipes			{ border-top:1px solid #CCC; padding:5px; font-size:11px; }
@@ -72,10 +72,13 @@
 				var categoria_nome = window.localStorage.getItem('categoria_nome');
 				var categoria_campeonato = window.localStorage.getItem('categoria_campeonato');
 				
+				var grupo = window.localStorage.getItem('grupo_id');
+				var grupo_nome = window.localStorage.getItem('grupo_nome');
+				
 				$('#tabela-titulo').html(categoria_nome);
 
-				$("#bt_tabela_voltar").click(function(){
-					$.mobile.changePage("grupos.html", { transition: "fade", changeHash: false });
+				$("#bt_tabela_interna_voltar").click(function(){
+					$.mobile.changePage("tabela.html", { transition: "fade", changeHash: false });
 				});
 
 				/*				
@@ -92,36 +95,26 @@
 					var items = [];
 						
 					$.each(info,function(data){
-						
-						items.push( "<div class='lista-grupos' rel='"+info[data].idGrupo+";"+info[data].nome+"'><div class='lista-grupos-titulo'>"+info[data].nome+"</div><div id='lista_equipes_"+info[data].idGrupo+"'></div><div class='lista-grupos-botao'>Clique e veja a tabela completa <i class='fa fa-angle-right' aria-hidden='true'></i></div></div>");
-
+						if(grupo==info[data].idGrupo){
+							items.push( "<div class='lista-grupos'><div class='lista-grupos-titulo'>"+info[data].nome+"</div><div id='lista_equipes_interna_"+info[data].idGrupo+"'></div><div class='lista-grupos-botao'>Clique e veja a tabela completa <i class='fa fa-angle-right' aria-hidden='true'></i></div></div>");
+						}
 					});
 					
-					$('#tabela_conteudo').html(items.join(""));
-						
-					$.each(info,function(data){
-						
-						$.post("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getTabelaGrupo", { id:info[data].idGrupo }, function(data2){
-							var info2 = JSON.parse(data2);
-							var items2 = [];
-							items2.push( "<div class='lista-grupos-equipes'><div class='lista-grupos-equipes-nome'><b>TIMES</b></div><div class='lista-grupos-equipes-pontos'><b>PTS</b></div><div style='clear:both;'></div></div>");
-							$.each(info2,function(data2){
-								items2.push( "<div class='lista-grupos-equipes'><div class='lista-grupos-equipes-nome'>"+info2[data2].equipe+"</div><div class='lista-grupos-equipes-pontos'>"+info2[data2].pontos+"</div><div style='clear:both;'></div></div>");
-							});
-		
-							$("#lista_equipes_"+info[data].idGrupo).html(items2.join(""));
-							
+					$('#tabela_interna_conteudo').html(items.join(""));
+					
+					$.post("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getTabelaGrupo", { id:grupo }, function(data2){
+						var info2 = JSON.parse(data2);
+						var items2 = [];
+						items2.push( "<div class='lista-grupos-equipes'><div class='lista-grupos-equipes-nome'><b>TIMES</b></div><div class='lista-grupos-equipes-pontos'><b>PTS</b></div><div style='clear:both;'></div></div>");
+						$.each(info2,function(data2){
+							items2.push( "<div class='lista-grupos-equipes'><div class='lista-grupos-equipes-nome'>"+info2[data2].equipe+"</div><div class='lista-grupos-equipes-pontos'>"+info2[data2].pontos+"</div><div style='clear:both;'></div></div>");
 						});
-
+	
+						$("#lista_equipes_interna_"+info[data].idGrupo).html(items2.join(""));
+						
 					});
 					
-					$('.lista-grupos').click(function(){
-						var id = $(this).attr('rel');
-						var informacoes = id.split(";#;")
-						window.localStorage.setItem('grupo_id',informacoes[0]);
-						window.localStorage.setItem('grupo_nome',informacoes[1]);
-						$.mobile.changePage("tabela_interna.html", { transition: "fade", changeHash: false });
-					});
+
 					
 				});
 				
