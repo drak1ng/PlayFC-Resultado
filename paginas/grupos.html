@@ -53,6 +53,7 @@
 			
 			<style>
 				#categorias-conteudo			{ margin:-11px -26px 0px -26px; }
+				.lista-titulo					{ text-align:center; background:#FFF; padding:10px 0px; font-weight:bold; }
 				.lista-categorias				{ border-top:1px solid #CCC; border-bottom:1px solid #CCC; background:#FFF; padding:15px; margin-bottom:-1px; color:#666; line-height:20px; font-size:13px; }
 				.lista-categorias b				{ font-size:15px; }
 				.lista-categorias i				{ display:block; float:left; font-size:30px; padding:5px 15px 0px 0px; }
@@ -68,7 +69,7 @@
 				var campeonato = window.localStorage.getItem('campeonato_id');
 				var categoria_nome = window.localStorage.getItem('campeonato_nome');
 				
-				$('#categorias-titulo').html(categoria_nome);
+				//$('#categorias-titulo').html(categoria_nome);
 
 				/*				
 				$('.topo2-menu').click(function(){ $('.menu-container').show(); });
@@ -91,7 +92,7 @@
 						items.push( "<div class='lista-categorias' rel='"+info[data].idCategoria+";#;"+info[data].titulo+";#;"+info[data].campeonato+"'><i class='fa fa-futbol-o' aria-hidden='true'></i><b>"+info[data].titulo+"</b><br>Campeonato "+info[data].campeonato+"</div>");
 					});
 
-					$('#categorias-conteudo').html(items.join(""));
+					$('#categorias-conteudo').html("<div class='lista-titulo'>"+categoria_nome+"</div>"+items.join(""));
 					
 					$('.lista-categorias').click(function(){
 						var categoria = $(this).attr('rel');
