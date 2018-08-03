@@ -58,6 +58,17 @@
 				.lista-grupos-equipes			{ border-top:1px solid #CCC; padding:5px; font-size:11px; }
 				.lista-grupos-equipes-nome		{ width:calc(100% - 180px); float:left; text-transform:uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 				.lista-grupos-equipes-pontos	{ width:30px; float:left; font-weight:bold; text-align:center; }
+				
+				.artilheiros					{ margin:10px 5px; padding:10px; border-radius:6px; background:#FFF; }
+				.artilheiros-titulo				{ text-align:center; color:#333; font-weight:bold; margin-bottom:10px; }
+				.artilheiros-lista				{ border-top:1px solid #CCC; padding:5px 0px; }
+				.artilheiros-lista-icone		{ width:50px; float:left; text-align:left; font-size:36px; color:#CCC; }
+				.artilheiros-lista:nth-child(2) .artilheiros-lista-icone { color:#FC9E16; }
+				.artilheiros-lista:nth-child(3) .artilheiros-lista-icone { color:#848ea1; }
+				.artilheiros-lista:nth-child(4) .artilheiros-lista-icone { color:#907f67; }
+				.artilheiros-lista-texto		{ width:calc(100% - 100px); float:left; font-weight:bold; color:#666; text-transform:uppercase; font-size:12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height:14px; padding-top:5px; }
+				.artilheiros-lista-texto span	{ font-size:11px; font-weight:normal; color:#888; }
+				.artilheiros-lista-gols			{ width:50px; float:left; text-align:center; font-size:20px; font-weight:bold; padding-top:7px; }
 			</style>
 			
 			<script>
@@ -69,6 +80,10 @@
 				var categoria = window.localStorage.getItem('categoria_id');
 				var categoria_nome = window.localStorage.getItem('categoria_nome');
 				var categoria_campeonato = window.localStorage.getItem('categoria_campeonato');
+				
+				categoria = 20;
+				categoria_nome = "SUB 17 MASCULINO";
+				categoria_campeonato = 15;
 				
 				$('#tabela-titulo').html(categoria_nome);
 
@@ -95,7 +110,7 @@
 
 					});
 					
-					$('#tabela_conteudo').html(items.join(""));
+					$('#tabela_conteudo').html(items.join("")+"<div class='artilheiros'></div>");
 						
 					$.each(info,function(data){
 						
@@ -111,6 +126,17 @@
 							
 						});
 
+					});
+					
+					$.post("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getArtilheirosCategoria", { id:categoria }, function(data){
+						var info3 = JSON.parse(data);
+						var items3 = [];
+							
+						$.each(info3,function(data3){
+							items3.push( "<div class='artilheiros-lista'><div class='artilheiros-lista-icone'><i class='fa fa-trophy' aria-hidden='true'></i></div><div class='artilheiros-lista-texto'>"+info3[data3].jogador+"<br><span>"+info3[data3].equipe+"</span></div><div class='artilheiros-lista-gols'>"+info3[data3].gols+"</div><div style='clear:both;'></div></div>");
+						});
+						
+						$('.artilheiros').html("<div class='artilheiros-titulo'>ARTILHEIROS</div>"+items3.join(""));
 					});
 					
 				});
