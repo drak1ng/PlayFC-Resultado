@@ -104,6 +104,7 @@
 						$.post("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getTabelaGrupo", { id:info[data].idGrupo }, function(data2){
 							var info2 = JSON.parse(data2);
 							var items2 = [];
+							items2.push( "<div class='lista-grupos-equipes'><div class='lista-grupos-equipes-nome'><b>Times</b></div><div class='lista-grupos-equipes-pontos'><b>Pts</b></div><div style='clear:both;'></div></div>");
 							$.each(info2,function(data2){
 								items2.push( "<div class='lista-grupos-equipes'><div class='lista-grupos-equipes-nome'>"+info2[data2].equipe+"</div><div class='lista-grupos-equipes-pontos'>"+info2[data2].pontos+"</div><div style='clear:both;'></div></div>");
 							});
