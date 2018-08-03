@@ -56,8 +56,8 @@
 				.lista-grupos					{ margin:10px 5px; padding:10px; border-radius:6px; background:#FFF; }
 				.lista-grupos-titulo			{ text-align:center; color:#333; font-weight:bold; margin-bottom:10px; }
 				.lista-grupos-equipes			{ border-top:1px solid #CCC; padding:5px; font-size:11px; }
-				.lista-grupos-equipes-nome		{ width:calc(100% - 30px); float:left; text-transform:uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-				.lista-grupos-equipes-pontos	{ width:24px; float:right; font-weight:bold; text-align:center; }
+				.lista-grupos-equipes-nome		{ width:calc(100% - 180px); float:left; text-transform:uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+				.lista-grupos-equipes-pontos	{ width:30px; float:left; font-weight:bold; text-align:center; }
 				.lista-grupos-botao				{ background:#666; color:#FFF; padding:10px 10px 7px 10px; text-align:right; border-radius:0px 0px 6px 6px; margin:10px -11px -11px -11px; font-size:13px; }
 				.lista-grupos-botao i			{ font-size:30px; float:right; margin:-5px 5px 0px 20px; }
 			</style>
@@ -93,7 +93,7 @@
 						
 					$.each(info,function(data){
 						
-						items.push( "<div class='lista-grupos' rel='"+info[data].idGrupo+";#;"+info[data].nome+"'><div class='lista-grupos-titulo'>"+info[data].nome+"</div><div id='lista_equipes_"+info[data].idGrupo+"'></div><div class='lista-grupos-botao'>Clique e veja a tabela completa <i class='fa fa-angle-right' aria-hidden='true'></i></div></div>");
+						items.push( "<div class='lista-grupos'><div class='lista-grupos-titulo'>"+info[data].nome+"</div><div id='lista_equipes_"+info[data].idGrupo+"'></div><div class='lista-grupos-botao'>Clique e veja a tabela completa <i class='fa fa-angle-right' aria-hidden='true'></i></div></div>");
 
 					});
 					
@@ -104,23 +104,15 @@
 						$.post("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getTabelaGrupo", { id:info[data].idGrupo }, function(data2){
 							var info2 = JSON.parse(data2);
 							var items2 = [];
-							items2.push( "<div class='lista-grupos-equipes'><div class='lista-grupos-equipes-nome'><b>TIMES</b></div><div class='lista-grupos-equipes-pontos'><b>PTS</b></div><div style='clear:both;'></div></div>");
+							items2.push( "<div class='lista-grupos-equipes'><div class='lista-grupos-equipes-nome'><b>TIMES</b></div><div class='lista-grupos-equipes-pontos'><b>P</b></div><div class='lista-grupos-equipes-pontos'><b>J</b></div><div class='lista-grupos-equipes-pontos'><b>V</b></div><div class='lista-grupos-equipes-pontos'><b>E</b></div><div class='lista-grupos-equipes-pontos'><b>D</b></div><div class='lista-grupos-equipes-pontos'><b>GP</b></div><div style='clear:both;'></div></div>");
 							$.each(info2,function(data2){
-								items2.push( "<div class='lista-grupos-equipes'><div class='lista-grupos-equipes-nome'>"+info2[data2].equipe+"</div><div class='lista-grupos-equipes-pontos'>"+info2[data2].pontos+"</div><div style='clear:both;'></div></div>");
+								items2.push( "<div class='lista-grupos-equipes'><div class='lista-grupos-equipes-nome'>"+info2[data2].equipe+"</div><div class='lista-grupos-equipes-pontos'>"+info2[data2].pontos+"</div><div class='lista-grupos-equipes-pontos'>"+info2[data2].jogos+"</div><div class='lista-grupos-equipes-pontos'>"+info2[data2].vitoria+"</div><div class='lista-grupos-equipes-pontos'>"+info2[data2].empate+"</div><div class='lista-grupos-equipes-pontos'>"+info2[data2].derrota+"</div><div class='lista-grupos-equipes-pontos'>"+info2[data2].golsP+"</div><div style='clear:both;'></div></div>");
 							});
 		
 							$("#lista_equipes_"+info[data].idGrupo).html(items2.join(""));
 							
 						});
 
-					});
-					
-					$('.lista-grupos').click(function(){
-						var id = $(this).attr('rel');
-						var informacoes = id.split(";#;")
-						window.localStorage.setItem('grupo_id',informacoes[0]);
-						window.localStorage.setItem('grupo_nome',informacoes[1]);
-						$.mobile.changePage("tabela_interna.html", { transition: "fade", changeHash: false });
 					});
 					
 				});

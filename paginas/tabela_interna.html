@@ -52,14 +52,15 @@
 			</div>
 			
 			<style>
-				#tabela_interna_conteudo				{ margin:9px -16px -16px -16px; padding:10px; }
-				.lista-grupos					{ margin:10px 5px; padding:10px; border-radius:6px; background:#FFF; }
-				.lista-grupos-titulo			{ text-align:center; color:#333; font-weight:bold; margin-bottom:10px; }
-				.lista-grupos-equipes			{ border-top:1px solid #CCC; padding:5px; font-size:11px; }
-				.lista-grupos-equipes-nome		{ width:calc(100% - 30px); float:left; text-transform:uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-				.lista-grupos-equipes-pontos	{ width:24px; float:right; font-weight:bold; text-align:center; }
-				.lista-grupos-botao				{ background:#666; color:#FFF; padding:10px 10px 7px 10px; text-align:right; border-radius:0px 0px 6px 6px; margin:10px -11px -11px -11px; font-size:13px; }
-				.lista-grupos-botao i			{ font-size:30px; float:right; margin:-5px 5px 0px 20px; }
+				#tabela_interna_conteudo				{ margin:9px -16px -16px -16px; padding:0px; }
+				
+				.grupos-interna-titulo					{ background:#ddd; padding:10px 15px; text-align:center; color:#000; font-weight:bold; }
+				
+				.lista-grupos-interna					{ padding:20px 0px; background:#FFF; }
+				.lista-grupos-interna-titulo			{ text-align:center; color:#333; font-weight:bold; margin-bottom:10px; }
+				.lista-grupos-interna-equipes			{ border-top:1px solid #CCC; padding:5px; font-size:11px; }
+				.lista-grupos-interna-equipes-nome		{ width:calc(100% - 180px); float:left; text-transform:uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+				.lista-grupos-interna-equipes-pontos	{ width:30px; float:left; font-weight:bold; text-align:center; }
 			</style>
 			
 			<script>
@@ -100,22 +101,25 @@
 				$.post("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getGruposCategoria", { id:categoria }, function(data){
 					var info = JSON.parse(data);
 					var items = [];
-						
+					var cabecalho = "";
+					
+					cabecalho+= "<div class='grupos-interna-titulo'>"+categoria_nome+"</div>";
+					
 					$.each(info,function(data){
 
 						if(grupo==info[data].idGrupo){
-							items.push( "<div class='lista-grupos'><div class='lista-grupos-titulo'>"+info[data].nome+"</div><div id='lista_equipes_interna_"+info[data].idGrupo+"'></div><div class='lista-grupos-botao'>Clique e veja a tabela completa <i class='fa fa-angle-right' aria-hidden='true'></i></div></div>");
+							items.push( "<div class='lista-grupos-interna'><div class='lista-grupos-interna-titulo'>"+info[data].nome+"</div><div id='lista_equipes_interna_"+info[data].idGrupo+"'></div></div>");
 						}
 					});
 					
-					$('#tabela_interna_conteudo').html(items.join(""));
+					$('#tabela_interna_conteudo').html(cabecalho+items.join(""));
 					
 					$.post("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getTabelaGrupo", { id:grupo }, function(data2){
 						var info2 = JSON.parse(data2);
 						var items2 = [];
-						items2.push( "<div class='lista-grupos-equipes'><div class='lista-grupos-equipes-nome'><b>TIMES</b></div><div class='lista-grupos-equipes-pontos'><b>PTS</b></div><div style='clear:both;'></div></div>");
+						items2.push("<div class='lista-grupos-interna-equipes'><div class='lista-grupos-interna-equipes-nome'><b>TIMES</b></div><div class='lista-grupos-interna-equipes-pontos'><b>P</b></div><div class='lista-grupos-interna-equipes-pontos'><b>J</b></div><div class='lista-grupos-interna-equipes-pontos'><b>V</b></div><div class='lista-grupos-interna-equipes-pontos'><b>E</b></div><div class='lista-grupos-interna-equipes-pontos'><b>D</b></div><div class='lista-grupos-interna-equipes-pontos'><b>GP</b></div><div style='clear:both;'></div></div>");
 						$.each(info2,function(data2){
-							items2.push( "<div class='lista-grupos-equipes'><div class='lista-grupos-equipes-nome'>"+info2[data2].equipe+"</div><div class='lista-grupos-equipes-pontos'>"+info2[data2].pontos+"</div><div style='clear:both;'></div></div>");
+							items2.push("<div class='lista-grupos-interna-equipes'><div class='lista-grupos-interna-equipes-nome'>"+info2[data2].equipe+"</div><div class='lista-grupos-interna-equipes-pontos'>"+info2[data2].pontos+"</div><div class='lista-grupos-interna-equipes-pontos'>"+info2[data2].jogos+"</div><div class='lista-grupos-interna-equipes-pontos'>"+info2[data2].vitoria+"</div><div class='lista-grupos-interna-equipes-pontos'>"+info2[data2].empate+"</div><div class='lista-grupos-interna-equipes-pontos'>"+info2[data2].derrota+"</div><div class='lista-grupos-interna-equipes-pontos'>"+info2[data2].golsP+"</div><div style='clear:both;'></div></div>");
 						});
 	
 						$("#lista_equipes_interna_"+grupo).html(items2.join(""));
