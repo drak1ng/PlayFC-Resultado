@@ -75,11 +75,11 @@
 				var grupo = window.localStorage.getItem('grupo_id');
 				var grupo_nome = window.localStorage.getItem('grupo_nome');
 				
-				categoria = "20";
+				categoria = 20;
 				categoria_nome = "SUB 17 MASCULINO";
-				categoria_campeonato = "15";
+				categoria_campeonato = 15;
 				
-				grupo = "168";
+				grupo = 268;
 				grupo_nome = "GRUPO C";
 				
 				$('#tabela-titulo').html(categoria_nome);
@@ -102,7 +102,7 @@
 					var items = [];
 						
 					$.each(info,function(data){
-						alert(grupo+"=="+info[data].idGrupo);
+
 						if(grupo==info[data].idGrupo){
 							items.push( "<div class='lista-grupos'><div class='lista-grupos-titulo'>"+info[data].nome+"</div><div id='lista_equipes_interna_"+info[data].idGrupo+"'></div><div class='lista-grupos-botao'>Clique e veja a tabela completa <i class='fa fa-angle-right' aria-hidden='true'></i></div></div>");
 						}
@@ -118,7 +118,7 @@
 							items2.push( "<div class='lista-grupos-equipes'><div class='lista-grupos-equipes-nome'>"+info2[data2].equipe+"</div><div class='lista-grupos-equipes-pontos'>"+info2[data2].pontos+"</div><div style='clear:both;'></div></div>");
 						});
 	
-						$("#lista_equipes_interna_"+info[data].idGrupo).html(items2.join(""));
+						$("#lista_equipes_interna_"+grupo).html(items2.join(""));
 						
 					});
 					
