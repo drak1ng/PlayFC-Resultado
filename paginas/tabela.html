@@ -58,8 +58,6 @@
 				.lista-grupos-equipes			{ border-top:1px solid #CCC; padding:5px; font-size:11px; }
 				.lista-grupos-equipes-nome		{ width:calc(100% - 180px); float:left; text-transform:uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 				.lista-grupos-equipes-pontos	{ width:30px; float:left; font-weight:bold; text-align:center; }
-				.lista-grupos-botao				{ background:#666; color:#FFF; padding:10px 10px 7px 10px; text-align:right; border-radius:0px 0px 6px 6px; margin:10px -11px -11px -11px; font-size:13px; }
-				.lista-grupos-botao i			{ font-size:30px; float:right; margin:-5px 5px 0px 20px; }
 			</style>
 			
 			<script>
@@ -93,7 +91,7 @@
 						
 					$.each(info,function(data){
 						
-						items.push( "<div class='lista-grupos'><div class='lista-grupos-titulo'>"+info[data].nome+"</div><div id='lista_equipes_"+info[data].idGrupo+"'></div><div class='lista-grupos-botao'>Clique e veja a tabela completa <i class='fa fa-angle-right' aria-hidden='true'></i></div></div>");
+						items.push( "<div class='lista-grupos'><div class='lista-grupos-titulo'>"+info[data].nome+"</div><div id='lista_equipes_"+info[data].idGrupo+"'></div></div>");
 
 					});
 					
