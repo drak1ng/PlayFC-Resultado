@@ -105,28 +105,14 @@
 <!--Geolocation-->
 <gap:plugin name="cordova-plugin-geolocation" source="npm"  spec="~2.4.2"  />
 
-
 <!--Network Information-->
 <gap:plugin name="cordova-plugin-network-information" source="npm"  />
 <gap:plugin name="cordova-plugin-media" source="npm"  />
 
-<gap:plugin name="cordova-open" source="npm"  />
 <gap:plugin name="cordova-plugin-inappbrowser" source="npm"  />
 
 <gap:plugin name="cordova-plugin-dialogs" source="npm"  />
 <gap:plugin name="cordova-plugin-device" source="npm" />
-
-<gap:plugin name="cordova-plugin-camera" source="npm"  spec="~2.4.1" />
-
-<plugin name="cordova-plugin-media-capture" source="npm" spec="*">
-  <variable name="CAMERA_USAGE_DESCRIPTION" value="App would like to access the camera." />
-  <variable name="MICROPHONE_USAGE_DESCRIPTION" value="App would like to access the microphone." />
-  <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App would like to access the library." />
-</plugin>
-
-<plugin name="phonegap-plugin-push" source="npm" spec="~1.8.0">
-    <variable name="SENDER_ID" value="652450127407" />
-</plugin>
 
 <!-- Teclado sobrepondo para o android, igual iphone -->
 <!--<preference name="android-windowSoftInputMode" value="adjustPan" />-->
