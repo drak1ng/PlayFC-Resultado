@@ -51,6 +51,12 @@
 				</div>
 			</div>
 			
+			<div class="botoes-rodape">
+				<div class="botoes-rodape1" id="preferencias-rodape1"><i class="fa fa-home" aria-hidden="true"></i>Página Inicial</div>
+				<div class="botoes-rodape2" id="preferencias-rodape2"><i class="fa fa-futbol-o" aria-hidden="true"></i>Campeonatos</div>
+				<div class="botoes-rodape3" id="preferencias-rodape3"><i class="fa fa-cogs" aria-hidden="true"></i>Preferências</div>
+			</div>
+			
 			<script>
 				
 				var tipo_usuarios = window.localStorage.getItem('tipo_usuarios');
@@ -62,6 +68,20 @@
 				});
 				
 				$.get("http://playfc.projetotemporario.com.br/app_api/configuracao.php", function(data){ $("#preferencias-conteudo").html(data); });
+				
+				
+				
+				$('#preferencias-rodape1').click(function(){
+					$.mobile.changePage("home.html", { transition: "fade", changeHash: false });
+				});
+				
+				$('#preferencias-rodape2').click(function(){
+					$.mobile.changePage("campeonatos.html", { transition: "fade", changeHash: false });
+				});
+				
+				$('#preferencias-rodape3').click(function(){
+
+				});
 				
 			</script>
 			
