@@ -53,6 +53,9 @@
 			
 			<style>
 				#tabela_conteudo				{ margin:9px -16px -16px -16px; padding:10px; }
+				
+				.grupos-nenhum					{ margin:10px 5px; padding:10px; border-radius:6px; background:#FFF; text-align:center; padding:20px 0px; }
+				
 				.lista-grupos					{ margin:10px 5px; padding:10px; border-radius:6px; background:#FFF; }
 				.lista-grupos-titulo			{ text-align:center; color:#333; font-weight:bold; margin-bottom:10px; }
 				.lista-grupos-equipes			{ border-top:1px solid #CCC; padding:5px; font-size:11px; }
@@ -106,14 +109,20 @@
 				$.post("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getGruposCategoria", { id:categoria }, function(data){
 					var info = JSON.parse(data);
 					var items = [];
+					var quantidade = 0;
 						
 					$.each(info,function(data){
 						
 						items.push( "<div class='lista-grupos' rel='"+info[data].idGrupo+"'><div class='lista-grupos-titulo'>"+info[data].nome+"</div><div id='lista_equipes_"+info[data].idGrupo+"'></div><div class='lista-grupos-botao'>Clique e veja a tabela completa <i class='fa fa-angle-right' aria-hidden='true'></i></div></div>");
+						quantidade = 1;
 
 					});
 					
-					$('#tabela_conteudo').html(items.join("")+"<div class='artilheiros'></div>");
+					if(quantidade==0){
+						$('#tabela_conteudo').html("<div class='grupos-nenhum'>Ainda não existem informações dessa competição</div>");
+					}else{
+						$('#tabela_conteudo').html(items.join("")+"<div class='artilheiros'></div>");
+					}
 						
 					$.each(info,function(data){
 						
