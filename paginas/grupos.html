@@ -54,6 +54,8 @@
 			<style>
 				#categorias-conteudo			{ margin:-11px -26px 0px -26px; }
 				.lista-titulo					{ text-align:center; background:#ddd; padding:10px 0px; font-weight:bold; font-size:18px; }
+				.lista-divisao					{ border-top:1px solid #CCC; border-bottom:1px solid #CCC; background:#FFF; padding:15px; margin-bottom:-1px; color:#666; line-height:20px; font-size:13px; }
+				.lista-caixa					{ display:none; }
 				.lista-categorias				{ border-top:1px solid #CCC; border-bottom:1px solid #CCC; background:#FFF; padding:15px; margin-bottom:-1px; color:#666; line-height:20px; font-size:13px; }
 				.lista-categorias b				{ font-size:15px; }
 				.lista-categorias i				{ display:block; float:left; font-size:30px; padding:5px 15px 0px 0px; }
@@ -86,15 +88,20 @@
 				
 				$.post("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getCategoriasCampeonato", { id:campeonato }, function(data){
 					var info = JSON.parse(data);
-					var items = [];
+					var items_m = [];
+					var items_f = [];
 					console.log(info);
 					$.each(info,function(data){
-						items.push( "<div class='lista-categorias' title='"+info[data].titulo+"' rel='"+info[data].idCategoria+";#;"+info[data].titulo+";#;"+info[data].campeonato+"'><i class='fa fa-futbol-o' aria-hidden='true'></i><b>"+info[data].titulo+"</b><br>Campeonato "+info[data].campeonato+"</div>");
+						if(info[data].divisao=="masc"){
+							items_m.push( "<div class='lista-categorias' title='"+info[data].titulo+"' rel='"+info[data].idCategoria+";#;"+info[data].titulo+";#;"+info[data].campeonato+"'><i class='fa fa-futbol-o' aria-hidden='true'></i><b>"+info[data].titulo+"</b><br>Campeonato "+info[data].campeonato+"</div>");
+						}else{
+							items_f.push( "<div class='lista-categorias' title='"+info[data].titulo+"' rel='"+info[data].idCategoria+";#;"+info[data].titulo+";#;"+info[data].campeonato+"'><i class='fa fa-futbol-o' aria-hidden='true'></i><b>"+info[data].titulo+"</b><br>Campeonato "+info[data].campeonato+"</div>");	
+						}
 					});
 					
 					items.sort();
 
-					$('#categorias-conteudo').html("<div class='lista-titulo'>"+categoria_nome+"</div>"+items.join(""));
+					$('#categorias-conteudo').html("<div class='lista-titulo'>"+categoria_nome+"</div><div class='lista-divisao' id='bt_masculino'>Masculino</div><div class='lista-caixa' id='lista_masculino'>"+items_m.join("")+"</div><div class='lista-divisao' id='bt_feminino'>Feminino</div><div class='lista-caixa' id='lista_feminino'>"+items_f.join("")+"</div>");
 					
 					$('.lista-categorias').click(function(){
 						var categoria = $(this).attr('rel');
@@ -103,6 +110,14 @@
 						window.localStorage.setItem('categoria_nome',informacoes[1]);
 						window.localStorage.setItem('categoria_campeonato',informacoes[2]);
 						$.mobile.changePage("tabela.html", { transition: "fade", changeHash: false });
+					});
+					
+					$('#bt_masculino').click(function(){
+						$('#lista_masculino').slideToggle();
+					});
+					
+					$('#bt_feminino').click(function(){
+						$('#lista_feminino').slideToggle();
 					});
 					
 				});
