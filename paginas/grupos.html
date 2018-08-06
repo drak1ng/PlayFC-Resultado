@@ -51,8 +51,14 @@
 				</div>
 			</div>
 			
+			<div class="botoes-rodape">
+				<div class="botoes-rodape1" id="categorias-rodape1"><i class="fa fa-home" aria-hidden="true"></i>Página Inicial</div>
+				<div class="botoes-rodape2" id="categorias-rodape2"><i class="fa fa-futbol-o" aria-hidden="true"></i>Campeonatos</div>
+				<div class="botoes-rodape3" id="categorias-rodape3"><i class="fa fa-cogs" aria-hidden="true"></i>Preferências</div>
+			</div>
+			
 			<style>
-				#categorias-conteudo			{ margin:-11px -26px 0px -26px; }
+				#categorias-conteudo			{ margin:-11px -26px 70px -26px; }
 				.lista-titulo					{ text-align:center; background:#ddd; padding:10px 0px; font-weight:bold; font-size:18px; }
 				.lista-divisao					{ border-top:1px solid #CCC; border-bottom:1px solid #CCC; background:#FFF; padding:15px; margin-bottom:-1px; color:#000; line-height:20px; font-size:15px; font-weight:bold; text-align:center; }
 				.lista-caixa					{ display:none; }
@@ -121,6 +127,20 @@
 						$('#lista_feminino').slideToggle();
 					});
 					
+				});
+				
+				
+				
+				$('#categorias-rodape1').click(function(){
+					$.mobile.changePage("home.html", { transition: "fade", changeHash: false });
+				});
+				
+				$('#categorias-rodape2').click(function(){
+					$.mobile.changePage("campeonatos.html", { transition: "fade", changeHash: false });
+				});
+				
+				$('#categorias-rodape3').click(function(){
+					$.mobile.changePage("preferencias.html", { transition: "fade", changeHash: false });
 				});
 				
 				
