@@ -89,8 +89,10 @@
 					var items = [];
 					console.log(info);
 					$.each(info,function(data){
-						items.push( "<div class='lista-categorias' rel='"+info[data].idCategoria+";#;"+info[data].titulo+";#;"+info[data].campeonato+"'><i class='fa fa-futbol-o' aria-hidden='true'></i><b>"+info[data].titulo+"</b><br>Campeonato "+info[data].campeonato+"</div>");
+						items.push( "<div class='lista-categorias' title='"+info[data].titulo+"' rel='"+info[data].idCategoria+";#;"+info[data].titulo+";#;"+info[data].campeonato+"'><i class='fa fa-futbol-o' aria-hidden='true'></i><b>"+info[data].titulo+"</b><br>Campeonato "+info[data].campeonato+"</div>");
 					});
+					
+					items.sort();
 
 					$('#categorias-conteudo').html("<div class='lista-titulo'>"+categoria_nome+"</div>"+items.join(""));
 					
