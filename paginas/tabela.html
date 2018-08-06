@@ -139,7 +139,7 @@
 
 					});
 					
-					$.post("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getJogosCategoria", { id:'28', data:'2017-08-06', atuais:'true' }, function(data){
+					$.post("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getJogosCategoria", { id:categoria, atuais:'true' }, function(data){
 						var info3 = JSON.parse(data);
 						var items3 = [];
 							
