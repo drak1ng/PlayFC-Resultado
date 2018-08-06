@@ -87,6 +87,14 @@
 				var grupo = window.localStorage.getItem('grupo_id');
 				var grupo_nome = window.localStorage.getItem('grupo_nome');
 				
+				alert(categoria+" - "+categoria_nome+" - "+categoria_campeonato+" - "+grupo+" - "+grupo_nome);
+				
+				categoria = "";
+				categoria_nome = "";
+				categoria_campeonato = "";
+				grupo = "";
+				grupo_nome = "";
+				
 				$('#tabela-titulo').html(categoria_nome);
 
 				$("#bt_tabela_interna_voltar").click(function(){
