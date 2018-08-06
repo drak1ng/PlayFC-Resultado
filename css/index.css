@@ -182,45 +182,13 @@ h1 {
 	text-shadow:none !important;
 }
 
-.botoes-rodape {
-	width:100%;
-	height:66px;
-	position:fixed;
-	z-index:999;
-	bottom:0px;
-	left:0px;
-	background:#FFF;
-	border-top:1px solid #f7ba00;
-	padding:0px
-}
-
-.botoes-rodape-bloco1 {
-	width:25%;
-	float:left;
-	text-align:center;
-	font-size:13px;
-	color:#000;
-	text-transform:none;
-	padding-top:46px;
-	padding-bottom:4px;
-	background:center 10px no-repeat;
-	background-size:30px;
-	text-shadow:none !important;
-}
-
-.botoes-rodape-bloco2 {
-	width:25%;
-	float:left;
-	text-align:center;
-	font-size:13px;
-	color:#003263;
-	text-transform:none;
-	padding-top:46px;
-	padding-bottom:4px;
-	background:center 10px no-repeat #ecfded;
-	background-size:30px;
-	text-shadow:none !important;
-}
+.botoes-rodape				{ position:fixed; bottom:0px; left:0px; width:100%; height:70px; background:#f7ba00; }
+.botoes-rodape1				{ width:33.333%; float:left; text-align:center; font-size:11.3px; }
+.botoes-rodape1 i			{ display:block; font-size:30px; padding:10px 0px; }
+.botoes-rodape2				{ width:33.333%; float:left; text-align:center; font-size:11.3px; }
+.botoes-rodape2 i			{ display:block; font-size:30px; padding:10px 0px; }
+.botoes-rodape3				{ width:33.333%; float:left; text-align:center; font-size:11.3px; }
+.botoes-rodape3 i			{ display:block; font-size:30px; padding:10px 0px; }
 
 .bt_voltar {
 	min-width:10px;
