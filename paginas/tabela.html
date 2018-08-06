@@ -117,7 +117,7 @@
 						
 					$.each(info,function(data){
 						
-						items.push( "<div class='lista-grupos'><div class='lista-grupos-titulo'>"+info[data].nome+"</div><div id='lista_equipes_"+info[data].idGrupo+"'></div></div>");
+						items.push( "<div class='lista-grupos' rel='"+info[data].idGrupo+"'><div class='lista-grupos-titulo'>"+info[data].nome+"</div><div id='lista_equipes_"+info[data].idGrupo+"'></div><div class='lista-grupos-botao'>Clique e veja a tabela completa <i class='fa fa-angle-right' aria-hidden='true'></i></div></div>");
 
 					});
 					
