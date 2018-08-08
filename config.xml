@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns = "http://www.w3.org/ns/widgets"
 	xmlns:gap = "http://phonegap.com/ns/1.0"
-	id        = "br.com.playfc.resultados"
-	versionCode="101" 
-	version   = "1.0.1">
-	<name>PlayFC Resultados</name>
+	id        = "br.com.playfc.app"
+	versionCode="100" 
+	version   = "1.0.0">
+	<name>Play FC</name>
 	<description>
-		PlayFC Resultados
+		Play FC
 	</description>
 
 	<author href="http://playfc.com.br" email="contato@playfc.com.br">
-		PlayFC
+		Play FC
 	</author>
 
 <icon src="icon.png" />
