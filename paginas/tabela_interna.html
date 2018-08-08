@@ -60,7 +60,8 @@
 			<style>
 				#tabela_interna_conteudo				{ margin:9px -16px 60px -16px; padding:0px; }
 				
-				.grupos-interna-titulo					{ background:#ddd; padding:10px 15px; text-align:center; color:#000; font-weight:bold; }
+				.grupos-interna-titulo					{ text-align:center; background:#ddd; padding:10px 0px; font-weight:bold; font-size:18px; margin: 0px 0px 0px 0px; line-height:18px; }
+				.grupos-interna-titulo span				{ font-weight:normal; font-size:16px; }
 				
 				.lista-grupos-interna					{ padding:20px 0px; background:#FFF; }
 				.lista-grupos-interna-titulo			{ text-align:center; color:#333; font-weight:bold; margin-bottom:10px; }
@@ -89,6 +90,8 @@
 				var categoria = window.localStorage.getItem('categoria_id');
 				var categoria_nome = window.localStorage.getItem('categoria_nome');
 				var categoria_campeonato = window.localStorage.getItem('categoria_campeonato');
+				var campeonato_nome = window.localStorage.getItem('campeonato_nome');
+				
 				
 				var grupo = window.localStorage.getItem('grupo_id');
 				var grupo_nome = window.localStorage.getItem('grupo_nome');
@@ -113,7 +116,7 @@
 					var items = [];
 					var cabecalho = "";
 					
-					cabecalho+= "<div class='grupos-interna-titulo'>"+categoria_nome+"</div>";
+					cabecalho+= "<div class='grupos-interna-titulo'>"+campeonato_nome+"<br><span>"+categoria_nome+"</div>";
 					
 					$.each(info,function(data){
 

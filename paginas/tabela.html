@@ -95,12 +95,11 @@
 				var categoria = window.localStorage.getItem('categoria_id');
 				var categoria_nome = window.localStorage.getItem('categoria_nome');
 				var categoria_campeonato = window.localStorage.getItem('categoria_campeonato');
+				var campeonato_nome = window.localStorage.getItem('campeonato_nome');
 				
 				//categoria = 20;
 				//categoria_nome = "SUB 17 MASCULINO";
 				//categoria_campeonato = 15;
-				
-				$('#tabela-titulo').html(categoria_nome);
 
 				$("#bt_tabela_voltar").click(function(){
 					$.mobile.changePage("grupos.html", { transition: "fade", changeHash: false });
@@ -128,9 +127,9 @@
 					});
 					
 					if(quantidade==0){
-						$('#tabela_conteudo').html("<div class='lista-titulo'>"+categoria_nome+"<br><span>"+categoria_nome+"</span></div><div class='grupos-nenhum'>Não existe informações cadastradas.</div>");
+						$('#tabela_conteudo').html("<div class='lista-titulo'>"+campeonato_nome+"<br><span>"+categoria_nome+"</span></div><div class='grupos-nenhum'>Não existe informações cadastradas.</div>");
 					}else{
-						$('#tabela_conteudo').html("<div class='lista-titulo'>"+categoria_nome+"<br><span>"+categoria_nome+"</span></div>"+items.join("")+"<div class='artilheiros'></div>");
+						$('#tabela_conteudo').html("<div class='lista-titulo'>"+campeonato_nome+"<br><span>"+categoria_nome+"</span></div>"+items.join("")+"<div class='artilheiros'></div>");
 					}
 						
 					$.each(info,function(data){
