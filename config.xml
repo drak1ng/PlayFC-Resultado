@@ -13,8 +13,6 @@
 		Play FC
 	</author>
 
-<icon src="icon.png" />
-
 <icon src="res/icones/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
 <icon src="res/icones/android/icon-48-mdpi.png"   gap:platform="android"    gap:density="mdpi" />
 <icon src="res/icones/android/icon-72-hdpi.png"   gap:platform="android"    gap:density="hdpi" />
