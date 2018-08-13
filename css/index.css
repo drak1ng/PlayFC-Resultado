@@ -31,7 +31,7 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#FFF !important;
+    background-color:#666 !important;
     font-family:'Roboto', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:12px;
     height:100%;
@@ -39,7 +39,7 @@ body {
     padding:0px;
     text-transform:uppercase;
     width:100%;
-    zoom:0.8;
+
 }
 
 /* Portrait layout (default) */
