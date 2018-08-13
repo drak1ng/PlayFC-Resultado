@@ -81,7 +81,7 @@
 
 <!--IOS Status Bar-->
 <feature name="StatusBar">
-	<param name="ios-package" value="CDVStatusBar" onload="true" />
+	<param name="ios-package" value="CDVStatusBar" onload="false" />
 </feature>
 <gap:plugin name="cordova-plugin-statusbar" source="npm" >
 	<preference name="StatusBarOverlaysWebView" value="false" />
