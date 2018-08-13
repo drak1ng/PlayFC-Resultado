@@ -58,7 +58,8 @@
 				document.addEventListener("offline", onOffLine, true);
 				
 		        function onDeviceReady() {
-		            setTimeout(carregar, 500);			    	
+			        StatusBar.backgroundColorByName("red");
+		            setTimeout(carregar, 500);
 		        }
 		        
 		        function onOnLine(){
