@@ -2,8 +2,8 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
 	xmlns:gap = "http://phonegap.com/ns/1.0"
 	id        = "br.com.playfc.app"
-	versionCode="101" 
-	version   = "1.0.1">
+	versionCode="102" 
+	version   = "1.0.2">
 	<name>Play FC</name>
 	<description>
 		Play FC
@@ -81,8 +81,9 @@
 
 <!--IOS Status Bar-->
 <feature name="StatusBar">
-	<param name="ios-package" value="CDVStatusBar" onload="true" />
+     <param name="ios-package" value="CDVStatusBar" onload="true" />
 </feature>
+
 <gap:plugin name="cordova-plugin-statusbar" source="npm" >
 	<preference name="StatusBarOverlaysWebView" value="true" />
 	<preference name="StatusBarBackgroundColor" value="#000000" />
@@ -102,6 +103,7 @@
 
 <gap:plugin name="cordova-plugin-dialogs" source="npm"  />
 <gap:plugin name="cordova-plugin-device" source="npm" />
+
 
 <!-- Teclado sobrepondo para o android, igual iphone -->
 <!--<preference name="android-windowSoftInputMode" value="adjustPan" />-->
