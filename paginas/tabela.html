@@ -75,6 +75,7 @@
 				
 				.artilheiros					{ margin:10px 5px; padding:10px; border-radius:6px; background:#FFF; }
 				.artilheiros-titulo				{ text-align:center; color:#333; font-weight:bold; margin-bottom:10px; }
+				.artilheiros-titulo span		{ font-weight:normal; font-size:12px; }
 				.artilheiros-lista				{ border-top:1px solid #CCC; padding:5px 0px; }
 				.artilheiros-lista-icone		{ width:50px; float:left; text-align:left; font-size:36px; color:#CCC; }
 				.artilheiros-lista:nth-child(2) .artilheiros-lista-icone { color:#FC9E16; }
@@ -156,7 +157,7 @@
 							items3.push( "<div class='artilheiros-lista'><div class='artilheiros-lista-icone'><i class='fa fa-trophy' aria-hidden='true'></i></div><div class='artilheiros-lista-texto'>"+info3[data3].jogador+"<br><span>"+info3[data3].equipe+"</span></div><div class='artilheiros-lista-gols'>"+info3[data3].gols+"</div><div style='clear:both;'></div></div>");
 						});
 						
-						$('.artilheiros').html("<div class='artilheiros-titulo'>ARTILHEIROS</div>"+items3.join(""));
+						$('.artilheiros').html("<div class='artilheiros-titulo'>ARTILHEIROS<br><span>"+campeonato_nome+" - "+categoria_nome+"</span></div>"+items3.join(""));
 					});
 					
 					$('.lista-grupos').click(function(){
