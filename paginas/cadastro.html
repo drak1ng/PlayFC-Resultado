@@ -69,7 +69,7 @@
 					
 					if(email==""){ alert("O campo E-mail deve ser preenchido"); return false; }
 					
-					$.get("http://playfc.projetotemporario.com.br/app_api/cadastro.php", { nome:nome, idade:idade, celular:celular, email:email, senha:senha }, function(data){
+					$.get("https://playfc.com.br/app_api/cadastro.php", { nome:nome, idade:idade, celular:celular, email:email, senha:senha }, function(data){
 						if(data=="ERRO_CELULAR"){
 							alert("Esse E-mail já foi utilizado em outro cadastro!");
 						}else{
