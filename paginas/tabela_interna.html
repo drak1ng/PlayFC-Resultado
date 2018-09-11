@@ -150,7 +150,7 @@
 						$.each(info3,function(data3){
 							imagem1 = info3[data3].brasaoEquipe1; if(imagem1=='' || imagem1==undefined || imagem1=='undefined'){ imagem1='../img/sem_logo.png'; }
 							imagem2 = info3[data3].BrasaoEquipe2; if(imagem2=='' || imagem2==undefined || imagem2=='undefined'){ imagem2='../img/sem_logo.png'; }
-							items3.push( "<div class='jogos-lista'><div class='jogos-lista-logos'><div class='jogos-lista-logo1' style='background-image:url("+imagem1+");'>"+info3[data3].golsEquipe1+"</div><div class='jogos-lista-logox'>X</div><div class='jogos-lista-logo2' style='background-image:url("+imagem2+");'>"+info3[data3].golsEquipe2+"</div><div style='clear:both;'></div></div><div class='jogos-lista-times'>"+info3[data3].nomeEquipe1+"<br><b>X</b><br>"+info3[data3].nomeEquipe2+"</div><div class='jogos-lista-dados'>Campo: "+info3[data3].campo+" | <span>Horário: "+info3[data3].hora+"</span></div></div>");
+							items3.push( "<div class='jogos-lista'><div class='jogos-lista-logos'><div class='jogos-lista-logo1' style='background-image:url("+imagem1+");'>"+info3[data3].golsEquipe1+"</div><div class='jogos-lista-logox'>X</div><div class='jogos-lista-logo2' style='background-image:url("+imagem2+");'>"+info3[data3].golsEquipe2+"</div><div style='clear:both;'></div></div><div class='jogos-lista-times'>"+info3[data3].nomeEquipe1+"<br><b>X</b><br>"+info3[data3].nomeEquipe2+"</div><div class='jogos-lista-dados'>Campo: "+info3[data3].campo+" | <span>Data: "+info3[data3].data_br+"</span> | <span>Horário: "+info3[data3].hora+"</span></div></div>");
 						});
 						
 						$('.jogos').html("<div class='jogos-titulo'>JOGOS DA RODADA</div>"+items3.join(""));
