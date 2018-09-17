@@ -129,7 +129,7 @@ h1 {
 }
 
 .ui-page {
-	background:url(../img/002.jpg) center center no-repeat #2d2d2d !important;
+	background:#f0f0f0 !important;
 	background-size:cover !important;
 }
 .ui-input-text {
