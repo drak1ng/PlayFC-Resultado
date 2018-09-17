@@ -146,10 +146,7 @@
 						$('#tabela_conteudo').html("<div class='lista-titulo'>"+campeonato_nome+"<br><span>"+categoria_nome+"</span></div><div class='eliminatorias'></div>"+items.join("")+"<div class='artilheiros'></div>");
 					}
 					
-					alert(categoria);
-					
 					$.post("https://playfc.com.br/app_api/obter_jogos_eliminatorias.php", { id:categoria, data:'', atuais:'true' }, function(data){
-						alert(data);
 						if(data!=''){
 							$('.eliminatorias').html(data);
 							$('.eliminatorias').show();
