@@ -43,20 +43,7 @@
 					    <img src="../img/logo_playfc.png" alt="PLAYFC" width="240" style="margin:30px 0px 10px 0px;">
 					</center>
 					<br><br>
-					<!--
-					<div class="home-itens1" id="home_campeonatos">
-						<i class='fa fa-futbol-o' aria-hidden='true'></i>
-						Campeonatos
-					</div>
-					<div class="home-itens2" id="home_preferencias">
-						<i class="fa fa-cogs" aria-hidden="true"></i>
-						Preferências
-					</div>
-					<div class="home-itens2" id="home_sair">
-						<i class="fa fa-sign-out" aria-hidden="true"></i>
-						Sair
-					</div>
-					-->
+					<div id="home_noticias"></div>
 					<div style="clear:both;"></div>
 				</div>
 			</div>
@@ -80,26 +67,10 @@
 				var tipo_usuarios = window.localStorage.getItem('tipo_usuarios');
 				var id_usuarios = window.localStorage.getItem('id_usuarios');
 				var registrationId = window.localStorage.getItem('registrationId');
-
-				/*				
-				$('.topo2-menu').click(function(){ $('.menu-container').show(); });
-				$.get("http://playfc.com.br/app_api/home.php", { tipo_usuarios:tipo_usuarios, id_usuarios:id_usuarios, registrationId:registrationId }, function(data){ $('#home_conteudo').html(data); });
-				*/
-				
-				$('#home_campeonatos').click(function(){
-					$.mobile.changePage("campeonatos.html", { transition: "fade", changeHash: false });
-				});
-				
-				$('#home_preferencias').click(function(){
-					$.mobile.changePage("preferencias.html", { transition: "fade", changeHash: false });
-				});
-				
-				$('#home_sair').click(function(){
-					window.localStorage.setItem('id_usuarios','');
-					$.mobile.changePage("login.html", { transition: "fade", changeHash: false });
-				});
 				
 				
+				
+				$.get("https://playfc.com.br/app_api/home-noticias.php", function(data){ $("#home_noticias").html(data); });
 				
 				$('#home-rodape1').click(function(){
 
