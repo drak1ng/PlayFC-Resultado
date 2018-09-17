@@ -85,6 +85,8 @@
 				.artilheiros-lista-texto span	{ font-size:11px; font-weight:normal; color:#888; }
 				.artilheiros-lista-gols			{ width:50px; float:left; text-align:center; font-size:20px; font-weight:bold; padding-top:7px; }
 				
+				.eliminatorias					{ display:none; }
+				
 			</style>
 			
 			<script>
@@ -130,9 +132,16 @@
 					if(quantidade==0){
 						$('#tabela_conteudo').html("<div class='lista-titulo'>"+campeonato_nome+"<br><span>"+categoria_nome+"</span></div><div class='grupos-nenhum'>Não existe informações cadastradas.</div>");
 					}else{
-						$('#tabela_conteudo').html("<div class='lista-titulo'>"+campeonato_nome+"<br><span>"+categoria_nome+"</span></div>"+items.join("")+"<div class='artilheiros'></div>");
+						$('#tabela_conteudo').html("<div class='lista-titulo'>"+campeonato_nome+"<br><span>"+categoria_nome+"</span></div><div class='eliminatorias'></div>"+items.join("")+"<div class='artilheiros'></div>");
 					}
-						
+					
+					$.post("/app_api/obter_jogos_eliminatorias.php", { id:categoria, data:'', atuais:'true' }, function(data){
+						if(data!=''){
+							$('.eliminatorias').html(data);
+							$('.eliminatorias').show();
+						}
+					});
+					
 					$.each(info,function(data){
 						
 						$.post("https://playfc.com.br/campeonatos/Informacoes_Campeonato/getTabelaGrupo", { id:info[data].idGrupo }, function(data2){
