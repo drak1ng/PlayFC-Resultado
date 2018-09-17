@@ -137,7 +137,7 @@
 					
 					alert(categoria);
 					
-					$.post("/app_api/obter_jogos_eliminatorias.php", { id:categoria, data:'', atuais:'true' }, function(data){
+					$.post("https://playfc.com.br/app_api/obter_jogos_eliminatorias.php", { id:categoria, data:'', atuais:'true' }, function(data){
 						alert(data);
 						if(data!=''){
 							$('.eliminatorias').html(data);
