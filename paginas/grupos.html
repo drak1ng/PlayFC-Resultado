@@ -104,9 +104,6 @@
 							items_f.push( "<div class='lista-categorias' title='"+info[data].titulo+"' rel='"+info[data].idCategoria+";#;"+info[data].titulo+";#;"+info[data].campeonato+"'><i class='fa fa-futbol-o' aria-hidden='true'></i><b>"+info[data].titulo+"</b><br>Campeonato "+info[data].campeonato+"</div>");	
 						}
 					});
-					
-					items_m.sort();
-					items_f.sort();
 
 					$('#categorias-conteudo').html("<div class='lista-titulo'>"+categoria_nome+"</div><div class='lista-divisao' id='bt_masculino'>Masculino</div><div class='lista-caixa' id='lista_masculino'>"+items_m.join("")+"</div><div class='lista-divisao' id='bt_feminino'>Feminino</div><div class='lista-caixa' id='lista_feminino'>"+items_f.join("")+"</div>");
 					
