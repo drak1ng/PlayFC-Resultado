@@ -69,7 +69,7 @@
 					$("#noticias-home-conteudo").html(data);
 				});
 				
-				
+				window.localStorage.setItem('noticia_pagina_anterior','noticias_home.html');
 				
 				$('#noticias-home-rodape1').click(function(){
 					$.mobile.changePage("home.html", { transition: "fade", changeHash: false });

@@ -66,10 +66,11 @@
 				var id_usuarios = window.localStorage.getItem('id_usuarios');
 				var registrationId = window.localStorage.getItem('registrationId');
 				var noticia_id = window.localStorage.getItem('noticia_id');
+				var noticia_pagina_anterior = window.localStorage.getItem('noticia_pagina_anterior');
 				
 
 				$("#bt-noticias-voltar").click(function(){
-					$.mobile.changePage("home.html", { transition: "fade", changeHash: false });
+					$.mobile.changePage(noticia_pagina_anterior, { transition: "fade", changeHash: false });
 				});
 				
 				$.get("https://playfc.com.br/app_api/noticia-interna.php", { id:noticia_id }, function(data){ $("#noticias-conteudo").html(data); });

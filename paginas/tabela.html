@@ -185,7 +185,7 @@
 					
 					$('.lista-grupos').click(function(){
 						var id = $(this).attr('rel');
-						var informacoes = id.split(";#;")
+						var informacoes = id.split(";#;");
 						window.localStorage.setItem('grupo_id',informacoes[0]);
 						window.localStorage.setItem('grupo_nome',informacoes[1]);
 						$.mobile.changePage("tabela_interna.html", { transition: "fade", changeHash: false });

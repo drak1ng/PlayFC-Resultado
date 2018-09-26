@@ -72,6 +72,8 @@
 				
 				
 				
+				window.localStorage.setItem('noticia_pagina_anterior','home.html');
+						
 				$.get("https://playfc.com.br/app_api/home-noticias.php", function(data){ $("#home_noticias").html(data); });
 				
 				$('#home-rodape1').click(function(){
