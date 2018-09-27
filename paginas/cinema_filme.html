@@ -70,7 +70,9 @@
 					$("#cinema-filme-conteudo").html(data);
 				});
 				
-				
+				$("#bt-cinema-filme-voltar").click(function(){
+					$.mobile.changePage("cinema_home.html", { transition: "fade", changeHash: false });
+				});
 				
 				$('#cinema-filme-rodape1').click(function(){
 					$.mobile.changePage("home.html", { transition: "fade", changeHash: false });
