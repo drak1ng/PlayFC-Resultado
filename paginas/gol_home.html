@@ -65,8 +65,8 @@
 				var id_usuarios = window.localStorage.getItem('id_usuarios');
 				var registrationId = window.localStorage.getItem('registrationId');
 				
-				$.get("https://playfc.com.br/app_api/campeonatos.php", function(data){
-					$("#campeonatos-conteudo").html(data);
+				$.get("https://playfc.com.br/app_api/gol-home.php", function(data){
+					$("#gol-home-conteudo").html(data);
 				});
 				
 				
