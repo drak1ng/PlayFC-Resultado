@@ -72,6 +72,7 @@
 					$("#gol-busca-conteudo").html(data);
 				});
 				
+				window.localStorage.setItem('gol_pagina_anterior','gol_busca.html');
 				
 				$("#bt-gol-busca-voltar").click(function(){
 					$.mobile.changePage("gol_home.html", { transition: "fade", changeHash: false });
