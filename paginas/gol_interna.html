@@ -67,9 +67,11 @@
 				var registrationId = window.localStorage.getItem('registrationId');
 				var narracoes_busca = window.localStorage.getItem('narracoes_busca');
 				var gol_pagina_anterior = window.localStorage.getItem('gol_pagina_anterior');
+				var narracao_id = window.localStorage.getItem('narracao_id');
 				
 				
-				$.get("https://playfc.com.br/app_api/gol-interna.php", { busca:narracoes_busca }, function(data){
+				
+				$.get("https://playfc.com.br/app_api/gol-interna.php", { id:narracao_id }, function(data){
 					$("#gol-conteudo").html(data);
 				});
 				
