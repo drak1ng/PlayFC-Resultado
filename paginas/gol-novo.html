@@ -70,7 +70,6 @@
 				
 				$.get("https://playfc.com.br/app_api/gol-novo.php", { busca:narracoes_busca }, function(data){
 					$("#gol-novo-conteudo").html(data);
-					$('#gol-novo-conteudo').enhanceWithin();
 				});
 				
 				$("#bt-gol-novo-voltar").click(function(){
